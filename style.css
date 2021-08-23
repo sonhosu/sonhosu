@@ -1,0 +1,819 @@
+/* Global */
+:root {
+  /* color */
+  --color-white: #ffffff;
+  --color-dark-grey: #8f8f8f;
+  --color-light-grey: #ebebeb;
+  --color-blue: #668efd;
+  --color-black: #4c4c4d;
+
+  /* Font-size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font-weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 500;
+  --weight-regular: 400;
+
+  /* Size */
+  --size-border-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* 기본여백 제거. F12 로 확인 */
+  margin: 0;
+  /* cursor default로 하면 텍스트 cursor가 안생긴다 */
+  cursor: default;
+  font-family: "Noto Sans KR", sans-serif;
+}
+/* a태그 기본값 설정 */
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+/* ul 기본값 설정 */
+ul {
+  list-style: none;
+}
+
+/* button 기본값 설정 */
+button {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+h1 {
+  font-weight: var(--weight-bold);
+  font-size: var(--font-large);
+  /* 기본 margin값 변경 */
+  margin: 16px 0;
+  color: var(--color-blue);
+}
+
+h2 {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-semi-bold);
+  margin: 8px 0;
+}
+
+h3 {
+  font-weight: var(--weight-regular);
+  font-size: var(--font-regular);
+  margin: 8px 0;
+}
+
+p {
+  font-weight: var(--weight-regular);
+  font-size: var(--font-regular);
+  margin: 8px 0;
+  color: var(--color-dark-grey);
+  /* 줄간격 */
+  line-height: 2;
+}
+
+/* navbar */
+#navbar {
+  position: fixed;
+  width: 100%;
+  /* margin 적용안됨.. section간에는 아닌가 */
+  /* margin-bottom: 70px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-blue);
+  /* transtion 적용 */
+  transition: all 300ms ease-in-out;
+  /* z-index의 default는 0 */
+  z-index: 1;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo img {
+  width: 50px;
+  height: 50px;
+  margin: 8px 16px;
+}
+
+.navbar__logo a {
+  margin-left: -25px;
+}
+
+/* navbar-menu */
+.navbar__menu {
+  display: flex;
+  padding-left: 0;
+}
+
+.navbar__menu .navbar__menu__item {
+  /* padding과 margin값은 알고 있자 */
+  padding: 8px 16px;
+  margin: 0 4px;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.navbar__menu .navbar__menu__item:hover {
+  background-color: skyblue;
+  border-radius: var(--size-border-radius);
+}
+
+.navbar__toggle-btn {
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+  color: var(--color-white);
+  top: 10px;
+  border-style: none;
+  /* 일단 없애 */
+  display: none;
+}
+#navbar.navbar--skyblue {
+  background-color: skyblue;
+}
+
+#navbar.navbar--skyblue .navbar__menu__item:hover {
+  color: var(--color-blue);
+}
+
+#home h1 {
+  color: var(--color-white);
+}
+#home {
+  background-color: var(--color-blue);
+  padding-top: 100px;
+  padding-left: 16px;
+  padding-bottom: 100px;
+}
+
+#text__animation h1 {
+  padding: 8px 12px;
+  color: var(--color-white);
+  margin-bottom: 0;
+}
+
+#flip {
+  height: 60px;
+  /* background-color: green; */
+  overflow: hidden;
+  /* hidden을 해줘야 모든 텍스트가 보여지는 것이
+  숨김이 되어 정해진 높이만큼만 보여집니다 */
+}
+/* text 를 다루는 것 */
+#flip > div > div {
+  color: var(--color-white);
+  padding: 4px 12px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 60px;
+  display: inline-block;
+  font-size: var(--font-large);
+  font-weight: var(--weight-bold);
+}
+
+#flip div:first-child {
+  /* show: animation-name */
+  /* 8s: duration time */
+  /* linear: 일정한 속도로 진행 */
+  /* infinite: 과정을 무한반복 */
+  animation: show 8s linear infinite;
+  /* animation-direction: alternate; */
+}
+
+/* animation의 중간단계 작업 */
+@keyframes show {
+  0% {
+    margin-top: -371px;
+  }
+  5% {
+    margin-top: -130px;
+  }
+  33% {
+    margin-top: -130px;
+  }
+  38% {
+    margin-top: -50px;
+  }
+  66% {
+    margin-top: -50px;
+  }
+  71% {
+    margin-top: 0px;
+  }
+  99.99% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: -371px;
+  }
+}
+
+/* .home__description {
+  padding: 8px 16px;
+} */
+
+.home__contact {
+  display: block;
+  margin: 0 auto;
+  margin-top: 230px;
+}
+/* 
+.forButtonMargin {
+  height: 20px;
+} */
+
+.character {
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  top: 200px;
+  right: 0;
+}
+
+/* home안에 있는 h1과 h3에만 white를 적용하기 위해 html에 class명 추가 */
+h1.font-white,
+h3.font-white {
+  color: var(--color-white);
+}
+
+/* Section은 가운데 정렬하니까 공통css적용 */
+/* section태그에 class 추가 */
+.section {
+  padding: 120px;
+  text-align: center;
+
+  /* 가운데로 오게끔! */
+  margin: auto;
+}
+
+.section__container {
+  /* 보통 max-width는 특정 section에만 적용하자 */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#aboutme .introduction img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+#aboutme {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#aboutme .introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 8px 16px;
+}
+
+#aboutme .introduction p {
+  margin-left: 40px;
+  /* margin-right: 8px; */
+  color: var(--color-dark-grey);
+}
+
+/* Timeline */
+.timeline ul {
+  padding: 50px 0;
+}
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding-top: 50px;
+  background-color: var(--color-light-grey);
+}
+
+.timeline ul li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+  z-index: 0;
+}
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 15px;
+  background: var(--color-blue);
+}
+
+.timeline ul li div::before {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ul li:nth-child(odd) div {
+  left: 45px;
+}
+
+.timeline ul li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent var(--color-blue) transparent transparent;
+}
+
+.timeline ul li:nth-child(even) div {
+  left: -439px;
+}
+
+.timeline ul li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent var(--color-blue);
+}
+
+time {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--color-white);
+}
+
+.timeline ul li div {
+  color: var(--color-white);
+  border-radius: 4px;
+}
+
+/* #skills {
+} */
+
+.skillset__title {
+  color: var(--color-blue);
+}
+.skillset {
+  display: flex;
+  margin: 20px 0;
+  opacity: 1;
+}
+
+/* operate animation when scrolling  */
+.fade {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* 너비는 100% 이지만, 늘어나지 않는 것은 컨텐츠 자체가 작기 때문 */
+/* /* 아이템들 크기가 자동적으로 늘어나기 위해서 아이템별로 flex-basis를 한다 */
+
+.skillset__left {
+  flex-basis: 60%;
+  padding: 20px 40px;
+}
+
+.skillset__right {
+  flex-basis: 40%;
+}
+
+.skill__description {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+/* progress-bar */
+
+.skill__bar {
+  /* div안에 컨텐츠 없으므로 너비와 높이 지정 */
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-light-grey);
+}
+
+.skill {
+  margin-bottom: 32px;
+}
+
+/* width는 html 태그에서 정하자 */
+.skill__value {
+  height: 3px;
+  background-color: var(--color-blue);
+}
+
+#skill__value-html {
+  animation-name: html;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes html {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 80%;
+  }
+}
+
+#skill__value-css {
+  animation-name: css;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes css {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+#skill__value-js {
+  animation-name: js;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes js {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+#skill__value-python {
+  animation-name: python;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes python {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+#skill__value-django {
+  animation-name: django;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes django {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 60%;
+  }
+}
+
+.tools,
+.etc {
+  padding: 20px;
+}
+
+/* .tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.tools__list,
+.etc__list {
+  padding-left: 0;
+}
+
+.category__btn {
+  border: 1px solid var(--color-dark-grey);
+  color: var(--color-dark-grey);
+  padding: 8px 48px;
+}
+
+.work__categories {
+  margin: 40px 0;
+}
+
+/* active는 고정으로 색깔변경 */
+.category__btn.active,
+.category__btn:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.category__btn.active .category__count,
+.category__btn:hover .category__count {
+  opacity: 1;
+  top: 0;
+}
+
+.category__count {
+  background-color: skyblue;
+  border-radius: 50%;
+  color: var(--color-blue);
+  width: 24px;
+  height: 24px;
+  /* span은 텍스트 그대로 감싼다. */
+  display: inline-block;
+  /* 텍스트 중간정렬 */
+  line-height: 24px;
+
+  /* 평소엔 안보이다가 active는 hover시 보이도록 */
+  position: relative;
+  top: -20px;
+  left: 4px;
+  opacity: 0;
+  /* transition을 어떻게 정할 지는 여기서 결정하고 */
+  /* hover또는 active일 때 변화 이후 속성의 값을 적으면 된다 */
+  transition: all 300ms ease;
+}
+.work__projects {
+  display: flex;
+  /* 아이템이 꽉차면 자동으로 줄 바꿈 */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.working-project {
+  display: inline-flex;
+  /* 아이템이 꽉차면 자동으로 줄 바꿈 */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 크기가 중구난방이니까 일단 a태그 크기 조정 */
+.project {
+  /* description에서 absolute사용해서  */
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 2px;
+  /* background-color: var(--color-light-grey) ; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* a태그 크기 조정해도 이미지가 너무 안맞기 때문에 조정 */
+/* 이미지들이 자기가 담겨있는 컨테이너를 넘어가면 안된다 */
+.project__img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/* description은 원래 박스안에서 공간을 차지하기 때문에 들어있던 박스에서 벗어나자 */
+/* 원래 들어있던 박스에서 벗어나 위치를 바꾸는 것은 absolute */
+.project__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* transition */
+  opacity: 0;
+  /* 쓰윽 올라오는 느낌 */
+  transform: translateY(10px);
+  transition: all 300ms ease-in;
+}
+
+.project:hover .project__description {
+  opacity: 0.8;
+  transform: translateY(0px);
+}
+
+/* description > h3와 span사이 구분을 짓고 싶을 때 */
+/* h3 태그 다음에 무엇을 할건가  */
+.project__description h3:after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-white);
+  /* line이 한줄에 하나씩 들어갈 수 있도록 */
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: 8px;
+}
+
+/* testimonial */
+.testimonials {
+  margin: 40px;
+}
+
+.testimonial {
+  display: flex;
+  margin: 32px 0;
+}
+
+.testimonial__avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.testimonial__speech-bubble {
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--size-border-radius);
+}
+
+.testimonial__avatar:nth-child(odd) {
+  margin-right: 40px;
+}
+
+.testimonial__avatar:nth-child(even) {
+  margin-left: 40px;
+}
+
+/* Contact */
+#contact {
+  background-color: var(--color-blue);
+}
+
+.contact__title,
+.contact__email {
+  color: var(--color-white);
+}
+
+.contact__links {
+  background-color: white;
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--size-border-radius);
+  margin-top: 20px;
+  /* border: 2px solid skyblue; */
+}
+
+.contact__links a {
+  margin: 0 8px;
+}
+.contact__links i {
+  color: black;
+  font-size: 40px;
+}
+
+.contact__links img {
+  width: 40px;
+}
+
+.contact__title {
+  margin: 32px;
+}
+
+.contact__links a:hover {
+  transform: scale(1.1);
+}
+
+.contact__right {
+  color: var(--color-white);
+  font-size: var(--font-micro);
+}
+
+@media screen and (max-width: 768px) {
+  /* media query 안에는 최소한의 것만 넣는것이 좋다 */
+  /* 차이점들이 뽑아진 아이들만 넣는다 */
+  /* media query는 스크린 사이즈가 작을때만 적용 */
+  /* 보통 styling은 밖에서 적용한다.차이점만 작성 */
+  .navbar__toggle-btn {
+    display: block;
+  }
+  #navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar__menu {
+    flex-direction: column;
+    text-align: center;
+    /* 근데 center해도 안움직인다 */
+    width: 100%;
+    /* button click 할때만 보이도록 */
+    display: none;
+  }
+
+  img.character {
+    display: none;
+  }
+
+  .navbar__menu.open {
+    display: block;
+  }
+
+  /* home */
+  #text__animation h1,
+  #text__animation #flip > div > div {
+    font-size: var(--font-medium);
+  }
+  @keyframes show {
+    0% {
+      margin-top: -371px;
+    }
+    5% {
+      margin-top: -170px;
+    }
+    33% {
+      margin-top: -170px;
+    }
+    38% {
+      margin-top: -80px;
+    }
+    66% {
+      margin-top: -80px;
+    }
+    71% {
+      margin-top: -8px;
+    }
+    99.99% {
+      margin-top: -8px;
+    }
+    100% {
+      margin-top: -371px;
+    }
+  }
+  /* Aboutme */
+  #aboutme .introduction {
+    flex-direction: column;
+  }
+
+  #aboutme .introduction p {
+    margin-top: 30px;
+  }
+
+  .timeline {
+    display: none;
+  }
+  /* Skills */
+  .skillset {
+    flex-direction: column;
+  }
+
+  .work__projects {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* flex-grow는 아이템 하나를 다 채우게 만드는 것 */
+  /* .project {
+    flex-grow: 1;
+  } */
+
+  /* avatar 크기가 너무 크니까 조정 */
+  .testimonial__avatar {
+    width: 80px;
+    height: 80px;
+  }
+  #spring{
+    width: 50px;
+    
+  }
+}
