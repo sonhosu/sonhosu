@@ -254,7 +254,7 @@ h3.font-white {
 /* Section은 가운데 정렬하니까 공통css적용 */
 /* section태그에 class 추가 */
 .section {
-  padding: 120px;
+  //padding: 120px;
   text-align: center;
 
   /* 가운데로 오게끔! */
